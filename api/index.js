@@ -6,8 +6,9 @@ import "./db/initDB.js";
 import rootRouter from "./routers/rootRouter.js";
 import authRouter from "./routers/authRouter.js";
 import hotelsRouter from "./routers/hotelsRouter.js";
-import usersRouter from "./routers/users.js";
+import usersRouter from "./routers/usersRouter.js";
 import roomsRouter from "./routers/roomsRouter.js";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 app.use("/", rootRouter);
 app.use("/api/auth", authRouter);

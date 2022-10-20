@@ -6,15 +6,16 @@ import {
   getHotel,
   updateHotel,
 } from "../controllers/hotelsController.js";
+import { verifAdmin } from "../utils/verifyToken.js";
 
 const hotelsRouter = express.Router();
 
 //CREATE
-hotelsRouter.route("/").post(createHotel);
+hotelsRouter.route("/").all(verifAdmin).post(createHotel);
 //UPDATE
-hotelsRouter.route("/:id").put(updateHotel);
+hotelsRouter.route("/:id").all(verifAdmin).put(updateHotel);
 //DELETE
-hotelsRouter.route("/:id").delete(deleteHotel);
+hotelsRouter.route("/:id").all(verifAdmin).delete(deleteHotel);
 //GET
 hotelsRouter.route("/:id").get(getHotel);
 //GET ALL
