@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  countByCity,
   createHotel,
   deleteHotel,
   getAllHotels,
@@ -11,14 +12,16 @@ import { verifAdmin } from "../utils/verifyToken.js";
 const hotelsRouter = express.Router();
 
 //CREATE
-hotelsRouter.route("/").all(verifAdmin).post(createHotel);
+hotelsRouter.route("/").all(verifAdmin).post(createHotel).get(getAllHotels);
 //UPDATE
-hotelsRouter.route("/:id").all(verifAdmin).put(updateHotel);
+hotelsRouter.route("update/:id").all(verifAdmin).put(updateHotel);
 //DELETE
-hotelsRouter.route("/:id").all(verifAdmin).delete(deleteHotel);
+hotelsRouter.route("delete/:id").all(verifAdmin).delete(deleteHotel);
 //GET
-hotelsRouter.route("/:id").get(getHotel);
+hotelsRouter.route("/find/:id").get(getHotel);
 //GET ALL
-hotelsRouter.route("/").get(getAllHotels);
+
+hotelsRouter.route("/countByCity").get(countByCity);
+hotelsRouter.route("/countByType").get();
 
 export default hotelsRouter;
