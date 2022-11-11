@@ -14,6 +14,8 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { useReducerAtom } from "jotai/utils";
+import { searchAtom, searchReducer } from "../../store/SearchStore";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -34,6 +36,9 @@ const Header = ({ type }) => {
 
   const navigate = useNavigate();
 
+  //Atom Reducer
+  const [searchState, dispatch] = useReducerAtom(searchAtom, searchReducer);
+
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -44,6 +49,7 @@ const Header = ({ type }) => {
   };
 
   const handleSearch = () => {
+    dispatch({ type: "NEW_SEARCH", payload: { destination, date, options } });
     navigate("/hotels", { state: { destination, date, options } });
   };
 
