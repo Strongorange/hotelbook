@@ -9,3 +9,7 @@ Loading 시 Skeleton 이펙트 추가하기
 CSS text-transform
 
     글자 전체, 혹은 첫 글자를 대,소문자로
+
+useLocation
+
+    React router dom 에서 현재 url 정보를 가져올 수 있음
