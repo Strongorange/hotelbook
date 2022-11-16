@@ -2,7 +2,7 @@ import { atom } from "jotai";
 
 const INITIAL_STATE = {
   city: undefined,
-  dates: [],
+  date: [],
   options: {
     adult: undefined,
     child: undefined,

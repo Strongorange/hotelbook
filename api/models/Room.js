@@ -6,7 +6,7 @@ const RoomSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     maxPeople: { type: Number, required: true },
     desc: { type: String, required: true },
-    roomNumbers: [{ numbers: Number, unavailableDates: { type: [Date] } }],
+    roomNumbers: [{ number: Number, unavailableDates: { type: [Date] } }],
   },
   { timestamps: true }
 );

@@ -6,6 +6,7 @@ import {
   deleteHotel,
   getAllHotels,
   getHotel,
+  getHotelRooms,
   updateHotel,
 } from "../controllers/hotelsController.js";
 import { verifAdmin } from "../utils/verifyToken.js";
@@ -25,5 +26,7 @@ hotelsRouter.route("/").get(getAllHotels);
 
 hotelsRouter.route("/countByCity").get(countByCity);
 hotelsRouter.route("/countByType").get(countByType);
+
+hotelsRouter.get("/room/:id", getHotelRooms);
 
 export default hotelsRouter;
